@@ -22,7 +22,7 @@ NGINX_VERSION='nginx-1.14.2'\
 && make \
 && make install \
 && nginx \
-&& curl https://raw.githubusercontent.com/JasonGiedymin/nginx-init-ubuntu/master/nginx -O /etc/init.d/nginx \
+&& curl https://raw.githubusercontent.com/dirav/NGiNX/master/nginx -O /etc/init.d/nginx \
 && chmod +x /etc/init.d/nginx \
 && update-rc.d -f nginx defaults \
 && echo "NGiNX it's work"
