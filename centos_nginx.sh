@@ -21,8 +21,6 @@ NGINX_VERSION='nginx-1.14.2'\
 && ./configure $CONFIG \
 && make \
 && make install \
-&& nginx \
-&& curl https://raw.githubusercontent.com/dirav/NGiNX/master/nginx -O /etc/init.d/nginx \
-&& chmod +x /etc/init.d/nginx \
-&& update-rc.d -f nginx defaults \
+&& mv nginx /etc/init.d/nginx \
+&& systemctl status nginx \
 && echo "NGiNX it's work"
