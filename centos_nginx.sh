@@ -1,24 +1,28 @@
 #!/usr/bin/env bash
-CONFIG="\
+NGINX_VERSION='nginx-1.14.2'\
+&& CONFIG="\
 	--sbin-path=/usr/bin/nginx \
 	--conf-path=/etc/nginx/nginx.conf \
 	--error-log-path=/var/log/nginx/error.log \
 	--http-log-path=/var/log/nginx/access.log \
-	--with-debug --with-pcre \
+	--with-debug \
+	--with-pcre \
 	--with-http_ssl_module \
 " \
-&& nginxzip='nginx-1.14.2'\
 && yum update -y \
-&& yum install epel-release -y \
-&& yum update -y \
-&& yum -y install libpcre3 libpcre3-dev libpcrecpp0 libssl-dev zlib1g-dev \
-#&& yum install gcc -y \
-&& curl -O http://nginx.org/download/$nginxzip.tar.gz \
-&& tar zxf $nginxzip.tar.gz \
-&& rm -f $nginxzip.tar.gz \
-&& cd $nginxzip \
+&& curl -O http://nginx.org/download/$NGINX_VERSION.tar.gz \
+&& tar zxf $NGINX_VERSION.tar.gz \
+&& rm -f $NGINX_VERSION.tar.gz \
+&& yum install -y gcc \
+	openssl-devel \
+	pcre-devel \
+	zlib-devel \
+&& cd $NGINX_VERSION \
 && ./configure $CONFIG \
 && make \
 && make install \
 && nginx \
+&& curl https://raw.githubusercontent.com/JasonGiedymin/nginx-init-ubuntu/master/nginx -O /etc/init.d/nginx \
+&& chmod +x /etc/init.d/nginx \
+&& update-rc.d -f nginx defaults \
 && echo "NGiNX it's work"
