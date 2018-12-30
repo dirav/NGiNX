@@ -1,7 +1,7 @@
 # Script for install and configure NGINX on CentOS 7
 
 ## Status
-[![Build Status](https://travis-ci.com/dirav/setup-nginx-centos.github.io.svg?branch=master)](https://travis-ci.com/dirav/setup-nginx-centos.github.io.svg?branch=master)
+
 ## Info
 
 ## Support
