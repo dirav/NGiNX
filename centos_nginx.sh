@@ -21,8 +21,4 @@ NGINX_VERSION='nginx-1.14.2'\
 && ./configure $CONFIG \
 && make \
 && make install \
-&& nginx \
-&& mv nginx /etc/init.d/nginx \
-&& chmod +x /etc/init.d/nginx \
-&& update-rc.d -f nginx defaults \
-&& echo "NGiNX it's work"
+&& nginx && echo "NGiNX it's work"
